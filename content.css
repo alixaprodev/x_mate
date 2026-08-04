@@ -1,0 +1,25 @@
+/* X Mate — ad hiding rules. Scoped under html[data-xmate="on"] so the popup toggle
+   can disable everything instantly by flipping one attribute. */
+
+/* Promoted / "Ad" tweets in the timeline: X wraps every ad with a
+   data-testid="placementTracking" impression-pixel block as a sibling of the
+   actual tweet inside the same virtualized list cell. Hiding the whole cell
+   removes both the pixels and the promoted tweet. */
+html[data-xmate="on"] div[data-testid="cellInnerDiv"]:has(div[data-testid="placementTracking"]) {
+  display: none !important;
+}
+
+/* Sidebar "Who to follow" ad slot (Google Ad Manager / SSP banner). */
+html[data-xmate="on"] [data-testid="whoToFollowSspAd"] {
+  display: none !important;
+}
+
+/* Generic catch-all: any Google Ad Manager (GPT) slot or iframe rendered
+   anywhere else on the page (trends module, profile pages, etc.). */
+html[data-xmate="on"] div[id^="div-gpt-ad"],
+html[data-xmate="on"] div[id^="google_ads_iframe"],
+html[data-xmate="on"] iframe[id^="google_ads_iframe"],
+html[data-xmate="on"] iframe[src*="googlesyndication.com"],
+html[data-xmate="on"] iframe[src*="doubleclick.net"] {
+  display: none !important;
+}
