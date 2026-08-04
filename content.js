@@ -40,9 +40,7 @@
 
     if (newly > 0) {
       chrome.storage.local.get({ blockedCount: 0 }, (data) => {
-        const total = data.blockedCount + newly;
-        chrome.storage.local.set({ blockedCount: total });
-        chrome.runtime.sendMessage({ type: 'xmate-blocked-update', total }).catch(() => {});
+        chrome.storage.local.set({ blockedCount: data.blockedCount + newly });
       });
     }
   }

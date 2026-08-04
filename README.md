@@ -39,7 +39,6 @@ popup's stats.
 manifest.json    Manifest V3 config
 content.css      The actual ad-hiding rules
 content.js       Sets the on/off state early, counts blocked ads
-background.js    Service worker — updates the toolbar badge
 popup.html/.css/.js   Toolbar popup UI (toggle + counter)
 icons/           Generated via gen_icons.py (Pillow)
 ```
