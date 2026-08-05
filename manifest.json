@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "X Mate — Ad Blocker for X",
   "version": "1.0.0",
-  "description": "Blocks promoted tweets in the timeline and sidebar ad banners on x.com / twitter.com.",
+  "description": "Removes all ads from X (Twitter) instantly. Clean feed, zero clutter, 100% private.",
   "homepage_url": "https://github.com/alixaprodev/x_mate",
   "icons": {
     "16": "icons/icon16.png",
