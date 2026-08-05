@@ -1,4 +1,7 @@
+from pathlib import Path
 from PIL import Image, ImageDraw
+
+ICONS_DIR = Path(__file__).resolve().parent.parent / "icons"
 
 def make_icon(size):
     img = Image.new("RGBA", (size, size), (0, 0, 0, 0))
@@ -29,6 +32,6 @@ def make_icon(size):
     return img
 
 for size in (16, 48, 128):
-    make_icon(size).save(f"icons/icon{size}.png")
+    make_icon(size).save(ICONS_DIR / f"icon{size}.png")
 
 print("done")
