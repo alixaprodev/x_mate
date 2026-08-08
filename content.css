@@ -4,8 +4,21 @@
 /* Promoted / "Ad" tweets in the timeline: X wraps every ad with a
    data-testid="placementTracking" impression-pixel block as a sibling of the
    actual tweet inside the same virtualized list cell. Hiding the whole cell
-   removes both the pixels and the promoted tweet. */
-html[data-xmate="on"] div[data-testid="cellInnerDiv"]:has(div[data-testid="placementTracking"]) {
+   removes both the pixels and the promoted tweet.
+
+   X reuses that same testid for the wrapper its video player mounts into,
+   which lives *inside* the tweet's <article>. That wrapper only appears once
+   playback starts, so matching it here would make an ordinary video vanish
+   the moment you press play — hence the :not() escape hatch. Promoted videos
+   have both wrappers, so they fall through to the [data-xmate-ad] rule below
+   which content.js flags. */
+html[data-xmate="on"] div[data-testid="cellInnerDiv"]:has(div[data-testid="placementTracking"]):not(:has(article div[data-testid="placementTracking"])) {
+  display: none !important;
+}
+
+/* Set by content.js on cells whose placementTracking block sits outside the
+   tweet's <article> — the reliable "this is an ad" signal. */
+html[data-xmate="on"] div[data-testid="cellInnerDiv"][data-xmate-ad] {
   display: none !important;
 }
 
